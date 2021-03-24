@@ -8,48 +8,31 @@ class InterventionsController < ApplicationController
 
     # POST /interventions or /interventions.json
     def create
-        #===================================================================================================
-        # PRINTS PARAMS INTO TERMINAL WINDOW
-        #===================================================================================================
-    
-        puts "===========START================"
-        puts params
-        puts "=============END================"
+        @intervention = Intervention.new()
 
-        #===================================================================================================
-        # SETUP VARIABLES BELOW
-        #===================================================================================================
-
-        customer_id = params["customer_id"]
-        building_id = params["building_id"]
-        battery_id = params["battery_id"]
-        column_id = params["column_id"]
-        elevator_id = params["elevator_id"]
-        employee_id = params["employee_id"]
-        description = params["description"]
-      
+        puts '#####################################'
+        puts intervention_params
+        puts '#####################################'
         
-        @intervention = Intervention.new(intervention_params)
-        
-         
-        @intervention.customer_id = customer_id
-        @intervention.building_id = building_id
-        @intervention.battery_id = battery_id
-        @intervention.column_id = column_id
-        @intervention.elevator_id = elevator_id
-        @intervention.employee_id = employee_id
-        @intervention.report = description
+        @intervention.author_id = Employee.find_by(user_id: current_user.id).id 
+        @intervention.customer_id = intervention_params[:customer]
+        @intervention.building_id = intervention_params[:building]
+        @intervention.battery_id = intervention_params[:battery]
+        @intervention.column_id = intervention_params[:column]
+        @intervention.elevator_id = intervention_params[:elevator]
+        @intervention.employee_id = intervention_params[:employee]
+        @intervention.report = intervention_params[:report]
 
         @intervention.save!
 
-        if @quote.save
+        if @intervention.save
             redirect_back fallback_location: root_path, notice: "Your Intervention was successfully created and sent!"
         end
 
     end
 
     def intervention_params
-        params.require(:intervention).permit(:customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :description)
+        params.require(:interventions).permit( :customer, :building, :battery, :column, :elevator, :employee, :result, :report, :status)
     end
 
 

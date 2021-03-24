@@ -27,53 +27,53 @@
 
         <!-- INTERVENTION FORM BEGINS -->
 
-            <%= form_for :interventions, url: url_for(controller: 'interventions', action: 'create'),  :html => {id: "interventionSubmit", :class => "text-center"} do |f|%>
+            <%= form_for :interventions, url: url_for(controller: 'interventions', action: 'create'),  :html => {:class => "text-center"} do |f|%>
             <div class="col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Customer *</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :customer_id, Customer.all.collect { |customer| [customer.company_name, customer.id] }.sort, :required => true %>
+                    <%= f.select :customer, Customer.all.collect { |customer| [customer.company_name, customer.id] }.sort %>
                 </div>
             </div>
             <br>
             <div class="col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Building *</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :building_id, Building.all.collect { |building| [building.id, building.id] }, :required => true %>
+                    <%= f.select :building, Building.all.collect { |building| [building.id, building.id] } %>
                 </div>
             </div>
             <br>
             <div class="col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Battery *</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :battery_id, Battery.all.collect { |battery| [battery.id, battery.id] }, :required => true %>
+                    <%= f.select :battery, Battery.all.collect { |battery| [battery.id, battery.id] } %>
                 </div>
             </div>
             <br>
             <div class="col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Column</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :column_id, Column.all.collect { |column| [column.id, column.id] }, include_blank: true %>
+                    <%= f.select :column, Column.all.collect { |column| [column.id, column.id] }, include_blank: true %>
                 </div>
             </div>
             <br>
             <div class="col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Elevator</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :elevator_id, Elevator.all.collect { |elevator| ["ID: " + elevator.id.to_s + " / S#: " + elevator.serial_number, elevator.id] }, include_blank: true %>
+                    <%= f.select :elevator, Elevator.all.collect { |elevator| ["ID: " + elevator.id.to_s + " / S#: " + elevator.serial_number, elevator.id] }, include_blank: true %>
                 </div>
             </div>
             <br>
             <div class="col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Assign Employee</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :employee_id, Employee.all.collect { |employee| [employee.first_name + " " +  employee.last_name, employee.id] }, include_blank: true, :required => true %>
+                    <%= f.select :employee, Employee.all.collect { |employee| [employee.first_name + " " +  employee.last_name, employee.id] }, include_blank: true %>
                 </div>
             </div>
             <br>
             <div class="col-lg-12 text-center offset-lg-12">
-                <label class="col-lg-12 text-center offset-lg-12">Description</label>
+                <label class="col-lg-12 text-center offset-lg-12">Report</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.text_area :description, size: "90x10" %>
+                    <%= f.text_area :report, size: "90x10" %>
                 </div>
             </div>
             <br>
