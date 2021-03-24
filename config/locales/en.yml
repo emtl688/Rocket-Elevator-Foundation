@@ -1,0 +1,55 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  # faker:
+  #   Lorem:
+  #     starwar:
+  #       "THE ORIGINAL STAR WARS CONCEPT WAS INSPIRED BY JOSEPH CAMPBELL. Though equally inspired by fairy tales, westerns, and 1930s sci-fi serials, George Lucas based the framework of the story for the original Star Wars (1977) around the theories of Joseph Campbell’s book, The Hero with a Thousand Faces. The book tracked common mythological motifs and argued that myths from around the world that have been passed down through generations—like Beowulf or King Arthur—share a basic structure. According to Campbell, “A hero ventures forth from the world of common day into a region of supernatural wonder fabulous forces are there encountered and a decisive victory is won; the hero comes back from this mysterious adventure with the power to bestow boons on his fellow man.” Lucas simply grafted these ideas onto his story, with Luke as the main hero."
+  #       "Ewok was never spoken in the original trilogy.The word "Ewok" is never uttered by a character in the original trilogy. Although, the species is identified in the script and closing credits."
+  #       "Boba Fett's face is actually visible in the original movies.You may think you never see Boba Fett's face in the original trilogy, but the actor who played Fett, Jeremy Bulloch, did stand in for an Imperial officer at the last minute"
+  #       "I have a bad feeling about this" became a running gag for the franchise.The phrase "I have a bad feeling about this" or "I have a very bad feeling about this" is said in every Star Wars movie"
+  #       "Return of the Jedi almost had a very different ending.In a story development session for Return of the Jedi, George Lucas toyed with the idea that after Luke removes dying Vader's helmet, he puts it on, proclaims "Now I am Vader" and turns to the dark side"
+  admin:
+    actions:
+      map:
+        menu: "Map"
+        title: "Map"
+        breadcrumb: "Map"
+      watson:
+        menu: "Watson"
+        title: "Watson"
+        breadcrumb: "Watson"
+      starwars:
+        menu: "Star Wars"
+        title: "Star Wars"
+        breadcrumb: "Star Wars"
+  

@@ -1,0 +1,14 @@
+<h1>Star Wars</h1>
+<button type="submit" id="starwars" class="btn btn-primary">Quotes</button>
+
+<audio id="audio">
+    <source src="<%= audio_path 'starwars.mp3'%>">
+</audio>
+
+<script> 
+    $('#starwars').on('click', ()=>{
+        var audio = $('#audio').get(0);
+        audio.paused? audio.play():audio.pause()
+        audio.paused? $('#starwars').text('PLAY'):$('#starwars').text('PAUSE')
+    })
+</script>
