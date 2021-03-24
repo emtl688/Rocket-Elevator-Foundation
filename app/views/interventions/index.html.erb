@@ -31,21 +31,21 @@
             <div class="col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Customer *</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :customer, Customer.all.collect { |customer| [customer.company_name, customer.id] }.sort %>
+                    <%= f.select :customer, Customer.all.collect { |customer| [customer.company_name, customer.id] }.sort, :required => true, include_blank: true %>
                 </div>
             </div>
             <br>
             <div class="col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Building *</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :building, Building.all.collect { |building| [building.id, building.id] } %>
+                    <%= f.select :building, Building.all.collect { |building| [building.id, building.id] }, :required => true %>
                 </div>
             </div>
             <br>
             <div class="col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Battery *</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :battery, Battery.all.collect { |battery| [battery.id, battery.id] } %>
+                    <%= f.select :battery, Battery.all.collect { |battery| [battery.id, battery.id] }, :required => true %>
                 </div>
             </div>
             <br>

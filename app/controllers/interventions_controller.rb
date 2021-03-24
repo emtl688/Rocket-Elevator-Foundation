@@ -9,10 +9,6 @@ class InterventionsController < ApplicationController
     # POST /interventions or /interventions.json
     def create
         @intervention = Intervention.new()
-
-        puts '#####################################'
-        puts intervention_params
-        puts '#####################################'
         
         @intervention.author_id = Employee.find_by(user_id: current_user.id).id 
         @intervention.customer_id = intervention_params[:customer]
