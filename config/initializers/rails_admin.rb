@@ -1,6 +1,5 @@
 require Rails.root.join('lib', 'rails_admin', 'map.rb')
 require Rails.root.join('lib', 'rails_admin', 'watson.rb')
-require Rails.root.join('lib', 'rails_admin', 'starwars.rb')
 
 RailsAdmin.config do |config|
   config.main_app_name = ["Rocket Elevators", "BackOffice"]
@@ -46,7 +45,6 @@ RailsAdmin.config do |config|
     #show_in_app
     watson
     map
-    starwars
     ## With an audit adapter, you can add:
     # history_index
     # history_show
