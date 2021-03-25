@@ -19,18 +19,19 @@ class InterventionsController < ApplicationController
         :comment => {
             :value => 
             "
-            Customer: #{@intervention.customer_id}\n
+            Customer: #{@intervention.customer.company_name}\n
             Building ID: #{@intervention.building_id}\n
             Battery ID: #{@intervention.battery_id}\n
             Column ID: #{@intervention.column_id}\n
             Elevator ID: #{@intervention.elevator_id}\n
             Employee: #{@intervention.employee.first_name} #{@intervention.employee.last_name}\n
-            Description: #{@intervention.report}"
+            Description: #{@intervention.report}
+            "
         },
         
         :requester => {
-            "name": Employee.where(user_id: @intervention.author_id).first.first_name + " " + Employee.where(user_id: @intervention.author_id).first.last_name, 
-            "email": Employee.where(user_id: @intervention.author_id).first.email
+            "name": Employee.where(user_id: @intervention.author).first.first_name + " " + Employee.where(user_id: @intervention.author).first.last_name, 
+            "email": Employee.where(user_id: @intervention.author).first.email
         },
         :priority => "normal",
         :type => "problem"
@@ -41,7 +42,7 @@ class InterventionsController < ApplicationController
     def create
         @intervention = Intervention.new()
         
-        @intervention.author_id = Employee.find_by(user_id: current_user.id).id
+        @intervention.author_id = Employee.find_by(user_id: current_user.id).id 
         @intervention.customer_id = intervention_params[:customer]
         @intervention.building_id = intervention_params[:building]
         @intervention.battery_id = intervention_params[:battery]
