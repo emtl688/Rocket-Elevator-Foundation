@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <%= javascript_include_tag "intervention" %>
+    
 </head>
     
 	
@@ -26,96 +26,154 @@
 
 
         <!-- INTERVENTION FORM BEGINS -->
-
-            <%= form_for :interventions, url: url_for(controller: 'interventions', action: 'create'),  :html => {:class => "text-center"} do |f|%>
-            <div class="col-lg-12 text-center offset-lg-12">
-                <label class="col-lg-12 text-center offset-lg-12">Select Customer *</label>
-                <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :customer, Customer.all.collect { |customer| [customer.company_name, customer.id] }.sort, {}, :id => "cust-select", :required => true, include_blank: true %>
-                </div>
+        <%= form_for :interventions, url: url_for(controller: 'interventions', action: 'create'),  :html => {:class => "text-center"} do |f|%>
+        
+        
+            <div class="col-lg-12 text-center offset-lg-12 selcust">
+                <label for="selectcustomer">Select Customer *</label>
+                <%= f.select :customer, Customer.all.collect { |customer| [customer.company_name, customer.id] }.sort, {}, :id => "selectcustomer", :required => true %>
             </div>
             <br>
-            <div class="int-form selectbuilding col-lg-12 text-center offset-lg-12">
-                <label class="col-lg-12 text-center offset-lg-12">Select Building *</label>
-                <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :building, Building.all.collect { |building| [building.id, building.id] }, {}, :id => "build-select", :required => true %>
-                </div>
+            <div class="col-lg-12 text-center offset-lg-12 selbuild selform">
+                <label for="selectbuilding">Select Building *</label>
+                <%= f.select :building, Building.all.collect { |building| [building.id, building.id] }, {}, :id => "selectbuilding", :required => true %>
             </div>
             <br>
-            <div class="int-form selectbattery col-lg-12 text-center offset-lg-12">
-                <label class="col-lg-12 text-center offset-lg-12">Select Battery *</label>
-                <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :battery, Battery.all.collect { |battery| [battery.id, battery.id] }, {}, :id => "batt-select", :required => true %>
-                </div>
+            <div class="col-lg-12 text-center offset-lg-12 selbatt selform">
+                <label for="selectbattery">Select Battery *</label>
+                <%= f.select :battery, Battery.all.collect { |battery| [battery.id, battery.id] }, {}, :id => "selectbattery", :required => true %>
             </div>
             <br>
-            <div class="int-form selectcolumn col-lg-12 text-center offset-lg-12">
-                <label class="col-lg-12 text-center offset-lg-12">Select Column</label>
-                <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :column, Column.all.collect { |column| [column.id, column.id] }, {}, :id => "colu-select", include_blank: true %>
-                </div>
+            <div class="col-lg-12 text-center offset-lg-12 selcol selform">
+                <label for="selectcolumn">Select Column</label>
+                <%= f.select :column, Column.all.collect { |column| [column.id, column.id] }, {}, :id => "selectcolumn", include_blank: true %>
             </div>
             <br>
-            <div class="int-form selectelevator col-lg-12 text-center offset-lg-12">
-                <label class="col-lg-12 text-center offset-lg-12">Select Elevator</label>
-                <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :elevator, Elevator.all.collect { |elevator| ["ID: " + elevator.id.to_s + " / S#: " + elevator.serial_number, elevator.id] }, :id => "elev-select", include_blank: true %>
-                </div>
+            <div class="col-lg-12 text-center offset-lg-12 selelev selform">
+                <label for="selectelevator">Select Elevator</label>
+                <%= f.select :elevator, Elevator.all.collect { |elevator| [elevator.serial_number, elevator.id] }, {}, :id => "selectelevator", include_blank: true %>
             </div>
             <br>
-            <div class="col-lg-12 text-center offset-lg-12">
-                <label class="col-lg-12 text-center offset-lg-12">Assign Employee</label>
-                <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :employee, Employee.all.collect { |employee| [employee.first_name + " " +  employee.last_name, employee.id] }, include_blank: true %>
-                </div>
+            <div class="col-lg-12 text-center offset-lg-12 selemp">
+                <label for="selectemployee">Assign To:</label>
+                <%= f.select :employee, Employee.all.collect { |employee| [employee.first_name + " " +  employee.last_name, employee.id] }, {}, :id => "selectemployee", include_blank: true %>
             </div>
             <br>
-            <div class="col-lg-12 text-center offset-lg-12">
-                <label class="col-lg-12 text-center offset-lg-12">Report</label>
-                <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.text_area :report, size: "90x10" %>
-                </div>
+            <div class="col-lg-12 text-center offset-lg-12 seldesc">
+                <label for="selectdescription">Description</label>
+                <%= f.text_area :report, { :id => 'selectdescription', size: "90x10" } %>
             </div>
-            <br>
-            <div class="col-lg-12 text-center offset-lg-12">
-                <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.submit 'SUBMIT', :class => 'btn-blue btn-lg mt-12' %>
-                </div>
+            
+            <div class="col-md-12 text-center">
+                <%= f.submit 'SUBMIT', :class => 'btn-blue btn-lg mt-12' %>
             </div>
-            <% end %>
-
-            <br>
-
-        </div>
+        
+        <% end %>
     </div>
-</div>
-                
-    <!-- /wrapper -->
-    <!-- SCROLL TO TOP -->
-    <a href="#" id="toTop"></a>
 </body>
-</html>
 
 <script>
 
-// SHOW/HIDE DROPDOWNS UPON SELECTION OF ASSET//
 
-$(".int-form").hide()
+// FUNCTIONS TO POPULATE DROPDOWN WITH THE RELATED DATA DEPENDING ON SELECTIONS //
 
-$('#cust-select').change(function(){
-    $(".selectbuilding").show()
+function buildingLoad() {
+    $("#selectbuilding").append("<option disabled selected>--Required--</option>")
+    <% Building.all.each do |building| %>
+    if ($('#selectcustomer').val() == <%=building.customer_id%>){
+        $("#selectbuilding").append("<option value='<%=building.id%>'>Building ID: <%=building.id%></option>")
+    }
+    <% end %>
+};
+
+function batteryLoad() {
+    $("#selectbattery").append("<option disabled selected>--Required--</option>")
+    <% Battery.all.each do |battery| %>
+    if ($('#selectbuilding').val() == <%=battery.building_id%>){
+        $("#selectbattery").append("<option value='<%=battery.id%>'>Battery ID: <%=battery.id%></option>")
+    }
+    <% end %>
+};
+
+function columnLoad() {
+    $("#selectcolumn").append("<option value='' selected>None</option>")
+    <% Column.all.each do |column| %>
+    if ($('#selectbattery').val() == <%=column.battery_id%>){
+        $("#selectcolumn").append("<option value='<%=column.id%>'>Column ID: <%=column.id%></option>")
+    }
+    <% end %>
+};
+
+function elevatorLoad() {
+    $("#selectelevator").append("<option value='' selected>None</option>")
+    <% Elevator.all.each do |elevator| %>
+    if ($('#selectcolumn').val() == <%=elevator.column_id%>){
+        $("#selectelevator").append("<option value='<%=elevator.id%>'>Serial Number: <%=elevator.serial_number%></option>")
+    }
+    <% end %>
+};
+
+
+
+// REFRESH PAGE INPUT FIELDS ON RELOAD //
+
+function autoRemove(arg) {
+    $(arg).find('option').remove()
+};
+
+function autoRemoveAll() {
+    $('#intervention').find('option').remove()
+};
+
+function clearText() {
+    $('#selectdescription').val("")
+};
+
+
+autoRemoveAll()
+clearText()
+
+$(".selform").hide()
+
+
+
+// SHOW/HIDE DEPENDING ON SELECTIONS IN THE FORM //
+$('#selectcustomer').change(function(){
+    autoRemove('#selectbuilding')
+    autoRemove('#selectbattery')
+    autoRemove('#selectcolumn')
+    autoRemove('#selectelevator')
+    $(".selform").hide()
+    $(".selbuild").show()
+    clearText()
+    buildingLoad()
 });
 
-$('#build-select').change(function(){
-    $(".selectbattery").show()
+$('#selectbuilding').change(function(){
+    autoRemove('#selectbattery')
+    autoRemove('#selectcolumn')
+    autoRemove('#selectelevator')
+    $(".selcol").hide()
+    $(".selelev").hide()
+    $(".selbatt").show()
+    clearText()
+    batteryLoad()
 });
 
-$('#batt-select').change(function(){
-    $(".selectcolumn").show()
+$('#selectbattery').change(function(){
+    autoRemove('#selectcolumn')
+    autoRemove('#selectelevator')
+    $(".selelev").hide()
+    $(".selcol").show()
+    clearText()
+    columnLoad()
 });
 
-$('#colu-select').change(function(){
-    $(".selectelevator").show()
+$('#selectcolumn').change(function(){
+    autoRemove('#selectelevator')
+    $(".selelev").show()
+    clearText()
+    elevatorLoad()
 });
 
 </script>

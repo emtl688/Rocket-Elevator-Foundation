@@ -54,7 +54,7 @@ module RailsAdmin
                 accept: "audio/mp3",
                 voice: "en-US_AllisonV3Voice"
               ).result 
-              puts response
+              
             audio_file.write(response)
             end
           end
