@@ -31,35 +31,35 @@
             <div class="col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Customer *</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :customer, Customer.all.collect { |customer| [customer.company_name, customer.id] }.sort, :required => true, include_blank: true %>
+                    <%= f.select :customer, Customer.all.collect { |customer| [customer.company_name, customer.id] }.sort, {}, :id => "cust-select", :required => true, include_blank: true %>
                 </div>
             </div>
             <br>
-            <div class="col-lg-12 text-center offset-lg-12">
+            <div class="int-form selectbuilding col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Building *</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :building, Building.all.collect { |building| [building.id, building.id] }, :required => true %>
+                    <%= f.select :building, Building.all.collect { |building| [building.id, building.id] }, {}, :id => "build-select", :required => true %>
                 </div>
             </div>
             <br>
-            <div class="col-lg-12 text-center offset-lg-12">
+            <div class="int-form selectbattery col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Battery *</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :battery, Battery.all.collect { |battery| [battery.id, battery.id] }, :required => true %>
+                    <%= f.select :battery, Battery.all.collect { |battery| [battery.id, battery.id] }, {}, :id => "batt-select", :required => true %>
                 </div>
             </div>
             <br>
-            <div class="col-lg-12 text-center offset-lg-12">
+            <div class="int-form selectcolumn col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Column</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :column, Column.all.collect { |column| [column.id, column.id] }, include_blank: true %>
+                    <%= f.select :column, Column.all.collect { |column| [column.id, column.id] }, {}, :id => "colu-select", include_blank: true %>
                 </div>
             </div>
             <br>
-            <div class="col-lg-12 text-center offset-lg-12">
+            <div class="int-form selectelevator col-lg-12 text-center offset-lg-12">
                 <label class="col-lg-12 text-center offset-lg-12">Select Elevator</label>
                 <div class="col-lg-12 text-center offset-lg-12">
-                    <%= f.select :elevator, Elevator.all.collect { |elevator| ["ID: " + elevator.id.to_s + " / S#: " + elevator.serial_number, elevator.id] }, include_blank: true %>
+                    <%= f.select :elevator, Elevator.all.collect { |elevator| ["ID: " + elevator.id.to_s + " / S#: " + elevator.serial_number, elevator.id] }, :id => "elev-select", include_blank: true %>
                 </div>
             </div>
             <br>
@@ -95,3 +95,27 @@
     <a href="#" id="toTop"></a>
 </body>
 </html>
+
+<script>
+
+// SHOW/HIDE DROPDOWNS UPON SELECTION OF ASSET//
+
+$(".int-form").hide()
+
+$('#cust-select').change(function(){
+    $(".selectbuilding").show()
+});
+
+$('#build-select').change(function(){
+    $(".selectbattery").show()
+});
+
+$('#batt-select').change(function(){
+    $(".selectcolumn").show()
+});
+
+$('#colu-select').change(function(){
+    $(".selectelevator").show()
+});
+
+</script>
