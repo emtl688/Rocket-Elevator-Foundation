@@ -77,7 +77,7 @@
 
 // FUNCTIONS TO POPULATE DROPDOWN WITH THE RELATED DATA DEPENDING ON SELECTIONS //
 
-function buildingLoad() {
+function populateBuildings() {
     $("#selectbuilding").append("<option disabled selected>--Required--</option>")
     <% Building.all.each do |building| %>
     if ($('#selectcustomer').val() == <%=building.customer_id%>){
@@ -87,12 +87,12 @@ function buildingLoad() {
 };
 
 
-function employeeLoad() {
+function populateEmployees() {
     $("#selectemployee").append("<option value='' selected>None</option>")
 };
 
 
-function batteryLoad() {
+function populateBatteries() {
     $("#selectbattery").append("<option disabled selected>--Required--</option>")
     <% Battery.all.each do |battery| %>
     if ($('#selectbuilding').val() == <%=battery.building_id%>){
@@ -101,7 +101,7 @@ function batteryLoad() {
     <% end %>
 };
 
-function columnLoad() {
+function populateColumns() {
     $("#selectcolumn").append("<option value='' selected>None</option>")
     <% Column.all.each do |column| %>
     if ($('#selectbattery').val() == <%=column.battery_id%>){
@@ -110,7 +110,7 @@ function columnLoad() {
     <% end %>
 };
 
-function elevatorLoad() {
+function populateElevators() {
     $("#selectelevator").append("<option value='' selected>None</option>")
     <% Elevator.all.each do |elevator| %>
     if ($('#selectcolumn').val() == <%=elevator.column_id%>){
@@ -123,22 +123,22 @@ function elevatorLoad() {
 
 // REFRESH PAGE INPUT FIELDS ON RELOAD //
 
-function autoRemove(arg) {
+function clearField(arg) {
     $(arg).find('option').remove()
 };
 
-function autoRemoveAll() {
+function clearEverything() {
     $('#intervention').find('option').remove()
 };
 
-function clearText() {
+function removeDescription() {
     $('#selectdescription').val("")
 };
 
 
-autoRemoveAll()
-clearText()
-employeeLoad()
+clearEverything()
+removeDescription()
+populateEmployees()
 
 $(".selform").hide()
 
@@ -146,41 +146,41 @@ $(".selform").hide()
 
 // SHOW/HIDE DEPENDING ON SELECTIONS IN THE FORM //
 $('#selectcustomer').change(function(){
-    autoRemove('#selectbuilding')
-    autoRemove('#selectbattery')
-    autoRemove('#selectcolumn')
-    autoRemove('#selectelevator')
+    clearField('#selectbuilding')
+    clearField('#selectbattery')
+    clearField('#selectcolumn')
+    clearField('#selectelevator')
     $(".selform").hide()
     $(".selbuild").show()
-    clearText()
-    buildingLoad()
+    removeDescription()
+    populateBuildings()
 });
 
 $('#selectbuilding').change(function(){
-    autoRemove('#selectbattery')
-    autoRemove('#selectcolumn')
-    autoRemove('#selectelevator')
+    clearField('#selectbattery')
+    clearField('#selectcolumn')
+    clearField('#selectelevator')
     $(".selcol").hide()
     $(".selelev").hide()
     $(".selbatt").show()
-    clearText()
-    batteryLoad()
+    removeDescription()
+    populateBatteries()
 });
 
 $('#selectbattery').change(function(){
-    autoRemove('#selectcolumn')
-    autoRemove('#selectelevator')
+    clearField('#selectcolumn')
+    clearField('#selectelevator')
     $(".selelev").hide()
     $(".selcol").show()
-    clearText()
-    columnLoad()
+    removeDescription()
+    populateColumns()
 });
 
 $('#selectcolumn').change(function(){
-    autoRemove('#selectelevator')
+    clearField('#selectelevator')
     $(".selelev").show()
-    clearText()
-    elevatorLoad()
+    removeDescription()
+    populateElevators()
 });
 
 </script>
