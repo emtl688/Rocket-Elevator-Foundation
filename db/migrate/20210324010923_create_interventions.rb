@@ -15,6 +15,5 @@ class CreateInterventions < ActiveRecord::Migration[5.2]
       t.string :status, :default => "Pending"
       t.timestamps
     end
-    rename_column :interventions, :author_id, :author
   end
 end
