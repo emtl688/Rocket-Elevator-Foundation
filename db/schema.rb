@@ -182,7 +182,7 @@ ActiveRecord::Schema.define(version: 2021_03_24_010923) do
   end
 
   create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "author_id", null: false
+    t.bigint "author", null: false
     t.bigint "customer_id", null: false
     t.bigint "building_id", null: false
     t.bigint "battery_id"
