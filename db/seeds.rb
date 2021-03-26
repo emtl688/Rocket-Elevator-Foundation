@@ -2407,23 +2407,7 @@ end
 
 #####################################################
 
-#-----------------------------------------------### Seed Interventions ###-------------------------------------------------
-puts "Seed Interventions"
 
-40.times do
-  FactIntervention.create!({
-    employee_id: Faker::Number.between(from: 1, to: 7),
-    building_id: Faker::Number.between(from: 1, to: 50),
-    battery_id: Faker::Number.between(from: 1, to: 50),
-    column_id: Faker::Number.between(from: 1, to: 110),
-    elevator_id: Faker::Number.between(from: 1, to: 190),
-    start_date: Faker::Date.between(from: '2020-03-23', to: '2020-06-23'),
-    end_date: Faker::Date.between(from: '2020-06-24', to: '2020-09-23'),
-    result: [:Success, :Failure, :Incomplete].sample,
-    report: Faker::Lorem.unique.paragraph,
-    status: [:Pending, :InProgress, :Interrupted, :Resumed, :Complete].sample
-  })
-end
 
 #-----------------------------------------------### Seed Lead ###-------------------------------------------------
 puts "Seed Lead"
@@ -2455,5 +2439,4 @@ ext = ['zip', 'pdf', 'jpg', 'png', 'txt']
   })
 end
 
-puts "Interventions Seeded"
 puts "Seed Ended"
