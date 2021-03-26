@@ -24,7 +24,7 @@ class InterventionsController < ApplicationController
             Battery ID: #{@intervention.battery_id}\n
             Column ID: #{@intervention.column_id}\n
             Elevator ID: #{@intervention.elevator_id}\n
-            Employee: #{@intervention.employee.first_name} #{@intervention.employee.last_name}\n
+            Assigned Employee ID: #{@intervention.employee_id}\n
             Description: #{@intervention.report}
             "
         },

@@ -86,6 +86,12 @@ function buildingLoad() {
     <% end %>
 };
 
+
+function employeeLoad() {
+    $("#selectemployee").append("<option value='' selected>None</option>")
+};
+
+
 function batteryLoad() {
     $("#selectbattery").append("<option disabled selected>--Required--</option>")
     <% Battery.all.each do |battery| %>
@@ -132,6 +138,7 @@ function clearText() {
 
 autoRemoveAll()
 clearText()
+employeeLoad()
 
 $(".selform").hide()
 
