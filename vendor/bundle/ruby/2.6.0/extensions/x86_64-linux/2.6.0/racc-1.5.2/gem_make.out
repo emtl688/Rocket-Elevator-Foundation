@@ -1,0 +1,16 @@
+current directory: /home/emtl688/consolidation/Rocket-Elevator-Foundation/vendor/bundle/ruby/2.6.0/gems/racc-1.5.2/ext/racc/cparse
+/home/emtl688/.rvm/rubies/ruby-2.6.6/bin/ruby -I /home/emtl688/.rvm/rubies/ruby-2.6.6/lib/ruby/site_ruby/2.6.0 -r ./siteconf20210401-31555-aui6ii.rb extconf.rb
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /home/emtl688/consolidation/Rocket-Elevator-Foundation/vendor/bundle/ruby/2.6.0/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR=" clean
+
+current directory: /home/emtl688/consolidation/Rocket-Elevator-Foundation/vendor/bundle/ruby/2.6.0/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR="
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /home/emtl688/consolidation/Rocket-Elevator-Foundation/vendor/bundle/ruby/2.6.0/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR=" install
+/usr/bin/install -m 0755 cparse.so ./.gem.20210401-31555-1fq7cu9/racc

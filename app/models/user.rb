@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :employees
   has_many :customers
+  validates_presence_of :password, :email
 end
