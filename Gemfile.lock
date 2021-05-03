@@ -249,6 +249,7 @@ GEM
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
     net-ssh (6.1.0)
+    newrelic_rpm (7.0.0)
     nio4r (2.5.7)
     nokogiri (1.11.3-x86_64-linux)
       racc (~> 1.4)
@@ -457,6 +458,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   multiverse
   mysql2 (>= 0.4.4, < 0.6.0)
+  newrelic_rpm
   open-weather
   pg (>= 0.18, < 2.0)
   phonelib

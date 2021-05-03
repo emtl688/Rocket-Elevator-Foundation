@@ -138,3 +138,6 @@ gem 'bcrypt_pbkdf'
 
 # Weather
 gem 'open-weather'
+
+#New Relic APM
+gem 'newrelic_rpm'
